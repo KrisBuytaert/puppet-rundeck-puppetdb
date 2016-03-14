@@ -1,0 +1,14 @@
+Listen 8888
+<VirtualHost *:8888>
+  ServerName    sl00256v.vdab.be
+  DocumentRoot  /opt/puppetdb-rundeck/public
+  <Directory    /opt/puppetdb-rundeck//public>
+    Order       allow,deny
+    Allow       from all
+    Require all granted
+  </Directory>
+  LogLevel info
+  ErrorLog /var/log/httpd/puppetdb_rundeck_error.log
+  CustomLog /var/log/httpd/puppetdb_rundeck_access.log combined
+</VirtualHost>
+
