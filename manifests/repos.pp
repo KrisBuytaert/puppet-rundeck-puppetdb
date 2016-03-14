@@ -1,4 +1,4 @@
-class profile_rundeck_puppetdb::repos {
+class rundeck_puppetdb::repos {
 
   yumrepo { 'passenger':
     ensure        => 'present',
