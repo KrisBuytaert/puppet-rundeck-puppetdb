@@ -1,16 +1,13 @@
 class rundeck_puppetdb (
   $puppetdburl = 'http://puppetdb:8081/'
 ) {
-  # this prfile will configure the rundeck plugin for puppetdb,
+  # this proile will configure the rundeck plugin for puppetdb,
   # it will run a passenger instance which will query puppetdb and export a yaml file with the nodes
   # etc when queried.
-
-
 
   package { 'puppetdb-rundeck':
     ensure => '1.0-1',
   }
-
 
   package {'passenger':
     ensure => present,
@@ -32,8 +29,6 @@ class rundeck_puppetdb (
     ensure =>  present,
   }
 
-
-
   include apache
   include apache::mod::passenger
 
@@ -44,10 +39,6 @@ class rundeck_puppetdb (
     mode   => '0755',
     owner  => '48',
   }
-
-
-
-
 
   file { '/etc/httpd/conf.d/puppetdb-rundeck.conf':
     content => template('rundeck_puppetdb/puppetdb-rundeck.conf.erb'),
